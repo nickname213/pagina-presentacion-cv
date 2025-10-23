@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Desarrollador Junior</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .profile-icon {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto 1.5rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-icon svg {
+            width: 80px;
+            height: 80px;
+            fill: #4f46e5;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        
+        .about-text {
+            color: #4b5563;
+            font-size: 1.125rem;
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto;
+            line-height: 1.75;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .skill-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .skill-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+        }
+        
+        .skill-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .skill-icon.purple { background: #f3e8ff; }
+        .skill-icon.purple svg { fill: #9333ea; }
+        .skill-icon.blue { background: #dbeafe; }
+        .skill-icon.blue svg { fill: #2563eb; }
+        .skill-icon.green { background: #dcfce7; }
+        .skill-icon.green svg { fill: #16a34a; }
+        .skill-icon.orange { background: #fed7aa; }
+        .skill-icon.orange svg { fill: #ea580c; }
+        .skill-icon.indigo { background: #e0e7ff; }
+        .skill-icon.indigo svg { fill: #4f46e5; }
+        .skill-icon.yellow { background: #fef3c7; }
+        .skill-icon.yellow svg { fill: #ca8a04; }
+        .skill-icon.teal { background: #ccfbf1; }
+        .skill-icon.teal svg { fill: #0d9488; }
+        
+        .skill-description {
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-fill.purple { background: #9333ea; }
+        .progress-fill.blue { background: #2563eb; }
+        .progress-fill.green { background: #16a34a; }
+        .progress-fill.orange { background: #ea580c; }
+        .progress-fill.indigo { background: #4f46e5; }
+        .progress-fill.yellow { background: #ca8a04; }
+        .progress-fill.teal { background: #0d9488; }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .experience-item {
+            text-align: center;
+        }
+        
+        .experience-number {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-text {
+            color: #4b5563;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #4f46e5;
+        }
+        
+        .btn-primary:hover {
+            background: #f3f4f6;
+        }
+        
+        .btn-secondary {
+            background: #4338ca;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #3730a3;
+        }
+        
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        footer p {
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .experience-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header / Hero Section -->
+    <header class="animate-fade-in">
+        <div class="container">
+            <div class="profile-icon">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <h1>Desarrollador Junior</h1>
+            <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">Full Stack Developer</p>
+            <div>
+                <span class="badge">Disponible para proyectos</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="container">
+        <div class="card animate-fade-in">
+            <h2 style="text-align: center;">Sobre mí</h2>
+            <p class="about-text">
+                Desarrollador Junior apasionado por la tecnología y el desarrollo de software. 
+                Con experiencia en múltiples tecnologías y lenguajes de programación, 
+                busco crear soluciones eficientes y escalables. Siempre en constante aprendizaje 
+                y dispuesto a enfrentar nuevos desafíos.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="container">
+        <h2 style="text-align: center;">Habilidades Técnicas</h2>
+        
+        <div class="skills-grid">
+            
+            <!-- C# Card -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon purple">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                        </svg>
+                    </div>
+                    <h3>C#</h3>
+                </div>
+                <p class="skill-description">Desarrollo de aplicaciones .NET, aplicaciones de escritorio y servicios backend.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill purple" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <!-- Python Card -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon blue">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3>Python</h3>
+                </div>
+                <p class="skill-description">Scripting, automatización, análisis de datos y desarrollo web con frameworks modernos.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill blue" style="width: 80%"></div>
+                </div>
+            </div>
+
+            <!-- SQL Card -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon green">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+                            <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+                            <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
+                        </svg>
+                    </div>
+                    <h3>SQL</h3>
+                </div>
+                <p class="skill-description">Diseño de bases de datos, consultas complejas y optimización de queries.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill green" style="width: 85%"></div>
+                </div>
+            </div>
+
+            <!-- MySQL Card -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon orange">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+                            <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+                            <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
+                        </svg>
+                    </div>
+                    <h3>MySQL</h3>
+                </div>
+                <p class="skill-description">Administración de bases de datos MySQL, stored procedures y performance tuning.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill orange" style="width: 80%"></div>
+                </div>
+            </div>
+
+            <!-- PHP Card -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon indigo">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3>PHP</h3>
+                </div>
+                <p class="skill-description">Desarrollo web backend, APIs RESTful y aplicaciones dinámicas.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill indigo" style="width: 70%"></div>
+                </div>
+            </div>
+
+            <!-- JavaScript Card -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon yellow">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3>JavaScript</h3>
+                </div>
+                <p class="skill-description">Desarrollo frontend interactivo, manipulación del DOM y programación asíncrona.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill yellow" style="width: 85%"></div>
+                </div>
+            </div>
+
+            <!-- Node.js Card -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon teal">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                        </svg>
+                    </div>
+                    <h3>Node.js</h3>
+                </div>
+                <p class="skill-description">Desarrollo de servidores backend, APIs REST y aplicaciones en tiempo real.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill teal" style="width: 75%"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Summary -->
+    <section class="container">
+        <div class="card">
+            <h2 style="text-align: center;">Experiencia</h2>
+            
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <div class="experience-number">Full Stack</div>
+                    <p class="experience-text">Desarrollo Frontend y Backend</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-number">Base de Datos</div>
+                    <p class="experience-text">SQL, MySQL y Gestión de Datos</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-number">Multi-lenguaje</div>
+                    <p class="experience-text">7+ Tecnologías Dominadas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="container">
+        <div class="cta-section">
+            <h2>¿Interesado en trabajar juntos?</h2>
+            <p>Estoy disponible para proyectos freelance y oportunidades de trabajo</p>
+            <div class="button-group">
+                <a href="mailto:contacto@ejemplo.com" class="btn btn-primary">
+                    Contactar
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    Ver Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Desarrollador Junior. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
